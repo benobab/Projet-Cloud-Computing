@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+    <servlet>
+        <servlet-name>Accueil</servlet-name>
+        <servlet-class>training.Accueil</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InitBDD</servlet-name>
+        <servlet-class>training.InitBDD</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddTrainingPlan</servlet-name>
+        <servlet-class>training.AddTrainingPlan</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InitBDD</servlet-name>
+        <url-pattern>/initbdd</url-pattern>
+    </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>home.html</welcome-file>
+    </welcome-file-list>
+    <servlet-mapping>
+        <servlet-name>Accueil</servlet-name>
+        <url-pattern>/gethomemessage</url-pattern>
+    </servlet-mapping>
+</web-app>

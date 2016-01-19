@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="821313753574-iq5dq8rjli8nusk20dvmgsmtumul3oaq.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <title>Accueil de notre site d'entrainement mon gars !</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body class="container col-md-12 well  jumbotron vertical-center">
+    <div class="container">
+        <div class="col-md-12">
+            <img src="/images/accueil.jpeg">
+        </div>
+        <div class="col-md-6 well">
+            <h3>Personnal Trainer</h3>
+            <span class="center-block" id="homeMessage">ICI</span>
+        </div>
+        <div class="col-md-6 center-block">
+            <a href="ha-search-screen.html">
+                <h2>Continuer</h2>
+            </a>
+        </div>
+    </div>
+
+</body>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery-1.11.1.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+
+
+<script>
+    $(function(){
+        $.get("/gethomemessage",function(data,status){
+            $("#homeMessage").html(data);
+        });
+    })
+</script>
+</html>
