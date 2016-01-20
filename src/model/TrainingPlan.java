@@ -1,15 +1,10 @@
 package model;
 
-import com.google.appengine.api.datastore.*;
-import training.UTIL;
+import com.google.appengine.api.datastore.Entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Benobab on 19/01/16.
- */
 public class TrainingPlan implements Serializable {
     private String title;
     private String description;
@@ -29,13 +24,11 @@ public class TrainingPlan implements Serializable {
     }
 
     public Entity toEntity(){
-        //Key k = KeyFactory.Builder("trainingPlan","trainingPlan").addChild();
         Entity trainingPlan = new Entity("TrainingPlan");
-        DatastoreService datastoreService =  DatastoreServiceFactory
-                .getDatastoreService();
         trainingPlan.setProperty("title",this.title);
         trainingPlan.setProperty("description",this.description);
         trainingPlan.setProperty("domain",this.domain);
+<<<<<<< HEAD
         trainingPlan.setProperty("email",this.email);
         com.google.appengine.api.datastore.Key key = UTIL.put(trainingPlan);
 
@@ -48,6 +41,8 @@ public class TrainingPlan implements Serializable {
             UTIL.put(entity);
             //trainingPlan.setProperty("exercise", UTIL.put(e.toEntity()));
         }
+=======
+>>>>>>> origin/master
         return trainingPlan;
     }
 

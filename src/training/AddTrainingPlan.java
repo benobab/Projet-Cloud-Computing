@@ -3,6 +3,8 @@ package training;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.repackaged.com.google.gson.Gson;
+import com.google.appengine.api.datastore.Key;
+import model.Exercise;
 import model.TrainingPlan;
 
 import javax.servlet.ServletException;
@@ -15,6 +17,7 @@ import java.io.IOException;
  * Created by Benobab on 19/01/16.
  */
 public class AddTrainingPlan extends HttpServlet {
+
     private static final String trainingKey = "trainingPlan";
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -23,8 +26,11 @@ public class AddTrainingPlan extends HttpServlet {
         TrainingPlan tp = gson.fromJson(request.getParameter(trainingKey), TrainingPlan.class);
         DatastoreService datastore = DatastoreServiceFactory
                 .getDatastoreService();
-        datastore.put(tp.toEntity());
-        //TODO: check if the put is OK
+        Key trKey = datastore.put(tp.toEntity());
+        for (Exercise exercice : tp.getExercises()) {
+            datastore.put(exercice.toEntity(trKey));
+        }
         response.setStatus(200);
+
     }
 }
