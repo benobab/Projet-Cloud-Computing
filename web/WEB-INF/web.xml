@@ -8,6 +8,14 @@
         <servlet-class>training.Accueil</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>TrainingPlanServlet</servlet-name>
+        <servlet-class>training.TrainingPlanController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TrainingPlanServlet</servlet-name>
+        <url-pattern>/trainingPlan</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>InitBDD</servlet-name>
         <servlet-class>training.InitBDD</servlet-class>
     </servlet>
