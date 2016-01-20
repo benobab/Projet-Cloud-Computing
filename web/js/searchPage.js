@@ -44,10 +44,12 @@ function displayUser(){
 
 function getAllDomaine(){
     $.get("/getalldomains",function(data,status){
-        var lineTemplate = $('#templates').find('[data-role="patternLigne"]');
-        for(d in data){
-            var line = lineTemplate.clone();
-            line.find("[data-role='paternLabel']").html(d.text);
+        var colonTemplate = $('#templates').find('[data-role="patternColon"]');
+        var dataParsed = JSON.parse(data);
+        for(d in dataParsed){
+            var line = colonTemplate.clone();
+            line.find("[data-role='paternLabel']").html(dataParsed[d]);
+            $("#listDomains").append(line);
         }
     });
 }
