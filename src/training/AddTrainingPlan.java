@@ -20,11 +20,12 @@ public class AddTrainingPlan extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-            Gson gson = new Gson();
-            TrainingPlan tp = gson.fromJson(request.getParameter(trainingKey), TrainingPlan.class);
-
+        Gson gson = new Gson();
+        TrainingPlan tp = gson.fromJson(request.getParameter(trainingKey), TrainingPlan.class);
         DatastoreService datastore = DatastoreServiceFactory
                 .getDatastoreService();
         datastore.put(tp.toEntity());
+        //TODO: check if the put is OK
+        response.setStatus(200);
     }
 }
