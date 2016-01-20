@@ -4,8 +4,10 @@
 
 getResearch = function(){
 
-    $.post("/search", {keyworkds : queryParameters.search}).done(function(data, textStatus){
+    $.post("/search", {keywords : queryParameters.search}).done(function(data, textStatus){
         console.log("LOL");
+    }).fail(function(){
+        console.log("Erreur récupération de la rechercher");
     });
 }
 

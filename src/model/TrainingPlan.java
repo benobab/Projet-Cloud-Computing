@@ -26,12 +26,24 @@ public class TrainingPlan implements Serializable {
         this.email = email;
     }
 
+    public TrainingPlan(String title, String description, String domain, String email) {
+        this.title = title;
+        this.description = description;
+        this.domain = domain;
+        this.email = email;
+    }
+
     public Entity toEntity(){
         Entity trainingPlan = new Entity("TrainingPlan");
         trainingPlan.setProperty("title",this.title);
         trainingPlan.setProperty("description",this.description);
         trainingPlan.setProperty("domain",this.domain);
         trainingPlan.setProperty("email",this.email);
+        return trainingPlan;
+    }
+
+    public static  TrainingPlan toTrainingPlan(Entity e){
+        TrainingPlan trainingPlan = new TrainingPlan((String)e.getProperty("title"),(String)e.getProperty("description"),(String)e.getProperty("domain"), (String)e.getProperty("email"));
         return trainingPlan;
     }
 
