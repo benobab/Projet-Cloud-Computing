@@ -34,7 +34,6 @@
             <form class="navbar-form navbar-left"  style="width:100%" role="search">
                 <div style="display: inline-block">
                     <div class="g-signin2" id="buttonGoogleLogin" data-onsuccess="onSignIn" data-theme="dark"></div>
-                    <div class="g-signin2" id="buttonGoogleLogout" data-onsuccess="signOut" data-theme="dark" style="display: none"></div>
                     <span id="divDisplayUser" style="color:white; display: none"></span>
                 </div>
           </form>
@@ -45,52 +44,6 @@
       <div class=" col-md-12 col-sm-12 col-xs-12 " style="margin-bottom:40px">
           <h3> Your Domain</h3>
       </div>
-      
-      <div class=" col-md-12 col-sm-12 col-xs-12" style="margin-bottom:80px">
-          <div class=" col-md-3 col-sm-3 col-xs-3 ">
-            <button type="submit" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-tree-deciduous"></span></button> <label> RUN </label>
-          </div>
-                    <div class=" col-md-3 col-sm-3 col-xs-3 ">
-            <button type="submit" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-tree-deciduous"></span></button> <label> RUN </label>
-           </div>
-                    <div class=" col-md-3 col-sm-3 col-xs-3 ">
-            <button type="submit" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-tree-deciduous"></span></button> <label> RUN </label>
-           </div>
-                    <div class=" col-md-3 col-sm-3 col-xs-3 ">
-            <button type="submit" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-tree-deciduous"></span></button> <label> RUN </label>
-           </div>
-       </div>
-      
-      <div class=" col-md-12 col-sm-12 col-xs-12 " style="margin-bottom:80px">
-          <div class=" col-md-3 col-sm-3 col-xs-3 ">
-            <button type="submit" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-tree-deciduous"></span></button> <label> RUN </label>
-          </div>
-                    <div class=" col-md-3 col-sm-3 col-xs-3 ">
-                    <button type="submit" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-tree-deciduous"></span></button> <label> RUN </label>
-           </div>
-                    <div class=" col-md-3 col-sm-3 col-xs-3 ">
-            <button type="submit" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-tree-deciduous"></span></button> <label> RUN </label>
-           </div>
-                    <div class=" col-md-3 col-sm-3 col-xs-3 ">
-            <button type="submit" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-tree-deciduous"></span></button> <label> RUN </label>
-           </div>
-       </div>
-      
-      <div class=" col-md-12 col-sm-12 col-xs-12 ">
-          <div class=" col-md-3 col-sm-3 col-xs-3 ">
-            <button type="submit" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-tree-deciduous"></span></button> <label> RUN </label>
-          </div>
-                    <div class=" col-md-3 col-sm-3 col-xs-3 ">
-            <button type="submit" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-tree-deciduous"></span></button> <label> RUN </label>
-           </div>
-                    <div class=" col-md-3 col-sm-3 col-xs-3 ">
-            <button type="submit" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-tree-deciduous"></span></button> <label> RUN </label>
-           </div>
-                    <div class=" col-md-3 col-sm-3 col-xs-3 ">
-            <button type="submit" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-tree-deciduous"></span></button> <label> RUN </label>
-           </div>
-       </div>
-      
       
       <!-- ------------------------------------------- FOOTER ZONE ------------------------------------------- -->
       <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
@@ -110,7 +63,17 @@
     <script>
         $(function(){
             testConnection();
+            getAllDomaine();
         })
     </script>
+
+    <div id="templates">
+          <div class=" col-md-12 col-sm-12 col-xs-12" style="margin-bottom:80px; display:none;" data-role="patternLigne">
+              <div class=" col-md-3 col-sm-3 col-xs-3" data-role="patternColon">
+                <button type="submit" class="btn btn-default btn-lg" data-role="paternButton"><span class="glyphicon glyphicon-tree-deciduous"></span></button> <label data-role="paternLabel"> RUN </label>
+              </div>
+          </div>
+    </div>
+
   </body>
 </html>

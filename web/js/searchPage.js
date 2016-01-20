@@ -39,5 +39,15 @@ function displayUser(){
     $("#buttonGoogleLogout").css("display", "block");
     $("#buttonGoogleLogin").css("display", "none");
     $("#divDisplayUser").css("display", "block");
-    $("#divDisplayUser").html("<span> " + window.localStorage.name +" | "+ window.localStorage.email + "</span> ");
+    $("#divDisplayUser").html("<span> " + window.localStorage.name +" | "+ window.localStorage.email + "</span> " + "<input type='button' value='Logout' class='btn btn-danger'' id='buttonGoogleLogout' onclick='signOut();'/>");
+}
+
+function getAllDomaine(){
+    $.get("/getalldomains",function(data,status){
+        var lineTemplate = $('#templates').find('[data-role="patternLigne"]');
+        for(d in data){
+            var line = lineTemplate.clone();
+            line.find("[data-role='paternLabel']").html(d.text);
+        }
+    });
 }
