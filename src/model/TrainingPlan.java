@@ -14,6 +14,7 @@ public class TrainingPlan implements Serializable {
     private String domain;
     private List<Exercise> exercises;
     private String email;
+    private String duration;
 
     public TrainingPlan() {
     }
@@ -42,14 +43,22 @@ public class TrainingPlan implements Serializable {
         return trainingPlan;
     }
 
-    public static  TrainingPlan toTrainingPlan(Entity e){
-        TrainingPlan trainingPlan = new TrainingPlan((String)e.getProperty("title"),(String)e.getProperty("description"),(String)e.getProperty("domain"), (String)e.getProperty("email"));
+    public static  TrainingPlan toTrainingPlan(Entity e, List<Exercise> listExercice){
+        TrainingPlan trainingPlan = new TrainingPlan((String)e.getProperty("title"),(String)e.getProperty("description"),(String)e.getProperty("domain"),listExercice, (String)e.getProperty("email"));
         return trainingPlan;
     }
 
 
     public String getEmail() {
         return email;
+    }
+
+    public String getDuration() {
+        return duration;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
     }
 
     public void setEmail(String email) {

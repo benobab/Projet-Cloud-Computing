@@ -5,11 +5,70 @@
 getResearch = function(){
 
     $.post("/search", {keywords : queryParameters.search}).done(function(data, textStatus){
+        console.log("Ok récupération de la recherche");
+        var dataParsed = JSON.parse(data);
+        var trainingPlanPatern = $('#patterns').find('[data-role="patternTraining"]');
+        for(var i = 0; i < dataParsed.trainingPlans.length; i++){
+            dataParsed.trainingPlans[i].duration = resetTotalDuration(dataParsed.trainingPlans[i].exercises);
+            var newHtmlPlan = trainingPlanPatern.clone();
+            newHtmlPlan.find("[data-role='labelTraining']").html(dataParsed.trainingPlans[i].title);
+            newHtmlPlan.find("[data-role='labelDuration']").html(dataParsed.trainingPlans[i].duration);
+            $("#trainingPlansList").append(newHtmlPlan);
+
+        }
+        var exercisePatern = $("#patterns").find('[data-role="patternExercise"]');
+        for(var j = 0; j < dataParsed.exercises.length; j++){
+            var newHtmlExercise = exercisePatern.clone();
+            newHtmlExercise.find("[data-role='labelExercise']").html(dataParsed.exercises[j].title);
+            newHtmlExercise.find("[data-role='labelDuration']").html(dataParsed.exercises[j].duration);
+            $("#listExercises").append(newHtmlExercise);
+        }
         console.log("LOL");
     }).fail(function(){
-        console.log("Erreur récupération de la rechercher");
+        console.log("Erreur récupération de la recherche");
     });
 }
+
+
+function resetTotalDuration(listExercices) {
+    var duration = "";
+    var durationHours = 0;
+    var durationMinutes = 0;
+    var durationSeconds = 0;
+    $.each(listExercices, function (i, e) {
+        var splitValue = e.duration.split(':');
+        durationHours += tryParseInt(splitValue[0]);
+        durationMinutes += tryParseInt(splitValue[1]);
+        durationSeconds += tryParseInt(splitValue[2]);
+    });
+    durationMinutes += Math.floor(durationSeconds / 60);
+    durationSeconds = durationSeconds % 60;
+    durationHours += Math.floor(durationMinutes / 60);
+    durationMinutes = durationMinutes % 60;
+    if (durationHours < 10) {
+        duration += "0" + durationHours + ":";
+    } else {
+        duration += durationHours + ":"
+    }
+    if (durationMinutes < 10) {
+        duration += "0" + durationMinutes + ":";
+    } else {
+        duration += durationMinutes + ":";
+    }
+    if (durationSeconds < 10) {
+        duration += "0" + durationSeconds;
+    } else {
+        duration += durationSeconds;
+    }
+    return duration;
+}
+
+function tryParseInt(str) {
+    if (isNaN(parseInt(str)) || !isFinite(str))
+        return undefined;
+    return parseInt(str);
+}
+
 
 var queryParameters = function () {
     var query_string = {};

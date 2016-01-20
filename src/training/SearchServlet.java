@@ -31,24 +31,27 @@ public class SearchServlet extends HttpServlet {
         DatastoreService datastore = DatastoreServiceFactory
                 .getDatastoreService();
 
-
-
-
         Query.FilterPredicate filter = new Query.FilterPredicate("title", Query.FilterOperator.IN,keys);
         Query q = new Query("TrainingPlan").setFilter(filter);
         PreparedQuery pq = datastore.prepare(q);
 
         List<TrainingPlan> trainingPlans = new ArrayList<>();
         for (Entity result : pq.asIterable()) {
-            trainingPlans.add(TrainingPlan.toTrainingPlan(result));
+            Query queryExercice = new Query("Exercise").setAncestor(result.getKey());
+            PreparedQuery preparedQueryExercise = datastore.prepare(queryExercice);
+            List<Exercise> listEx = new ArrayList<>();
+            for(Entity resultExercise : preparedQueryExercise.asIterable()){
+                listEx.add(Exercise.toExercice(resultExercise));
+            }
+            trainingPlans.add(TrainingPlan.toTrainingPlan(result, listEx));
         }
 
         Query q2 = new Query("Exercise").setFilter(filter);
-        PreparedQuery pq2 = datastore.prepare(q);
+        PreparedQuery pq2 = datastore.prepare(q2);
 
         List<Exercise> exercises = new ArrayList<>();
-        for (Entity result : pq.asIterable()) {
-            exercises.add(Exercise.toExercice(result));
+        for (Entity resultExercice : pq2.asIterable()) {
+            exercises.add(Exercise.toExercice(resultExercice));
         }
 
         Gson gson = new Gson();

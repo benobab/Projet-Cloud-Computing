@@ -42,27 +42,15 @@
 
 <div class=" col-md-12 col-sm-12 col-xs-12 " style="margin-bottom:40px">
     <h3> Training plans</h3>
-    <div class=" col-md-6 col-sm-6 col-xs-6">
-        <button type="submit" class="btn btn-link">Intensive Running</button>
-    </div>
-    <div class=" col-md-6 col-sm-6 col-xs-6">
-        <label class="btn"> <span class="glyphicon glyphicon-time"></span> 50 min. </label>
+    <div id="trainingPlansList">
+
     </div>
 </div>
 
 <div class=" col-md-12 col-sm-12 col-xs-12 " style="margin-bottom:40px">
     <h3>Exercices</h3>
-    <div class=" col-md-6 col-sm-6 col-xs-6">
-        <button type="submit" class="btn btn-link">Running Warm up</button>
-    </div>
-    <div class=" col-md-6 col-sm-6 col-xs-6">
-        <label class="btn"> <span class="glyphicon glyphicon-time"></span> 10 min. </label>
-    </div>
-    <div class=" col-md-6 col-sm-6 col-xs-6">
-        <button type="submit" class="btn btn-link">Running 30/30</button>
-    </div>
-    <div class=" col-md-6 col-sm-6 col-xs-6">
-        <label class="btn"> <span class="glyphicon glyphicon-time"></span> 15 min. </label>
+    <div id="listExercises">
+
     </div>
 </div>
 
@@ -89,6 +77,25 @@
     </div>
 </nav>
 <!-- ------------------------------------------- FOOTER ZONE END ------------------------------------------- -->
+
+<div id="patterns" style="display : none">
+    <div data-role="patternTraining">
+        <div class=" col-md-6 col-sm-6 col-xs-6">
+            <button type="button" class="btn btn-link" data-role="labelTraining"></button>
+        </div>
+        <div class=" col-md-6 col-sm-6 col-xs-6">
+            <label class="btn"> <span class="glyphicon glyphicon-time"></span><span data-role="labelDuration"></span></label>
+        </div>
+    </div>
+    <div data-role="patternExercise">
+        <div class=" col-md-6 col-sm-6 col-xs-6">
+            <button type="btton" class="btn btn-link" data-role="labelExercise"></button>
+        </div>
+        <div class=" col-md-6 col-sm-6 col-xs-6">
+            <label class="btn"> <span class="glyphicon glyphicon-time"></span><span data-role="labelDuration"></span></label>
+        </div>
+    </div>
+</div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery-1.11.1.min.js"></script>
