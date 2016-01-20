@@ -7,12 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Benobab on 19/01/16.
  */
 public class InitBDD extends HttpServlet {
     private static final String MSG_ACCUEIL = "message_accueil";
+    private static final String DOMAIN = "DOMAIN";
+    private static final String DOMAIN_PROPERTY = "label";
+
+    private static final String[] LISTSTRINGDOMAINS = {"Running", "Volleyball", "Boxe", "BaseBall"};
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
@@ -39,6 +46,23 @@ public class InitBDD extends HttpServlet {
             //enregistrer l'entité dans le datastore
             datastore.put(message);
         }
+
+        List<String> listDomains = new ArrayList<>();
+        Query qD = new Query(DOMAIN);
+        PreparedQuery pqD = datastore.prepare(qD);
+
+        for(Entity result : pqD.asIterable()){
+            listDomains.add((String) result.getProperty(DOMAIN_PROPERTY));
+        }
+
+        if(listDomains.size() == 0){
+            for(int i = 0; i < LISTSTRINGDOMAINS.length; i++){
+                Entity domain = new Entity(DOMAIN);
+                domain.setProperty(DOMAIN_PROPERTY, LISTSTRINGDOMAINS[i]);
+                datastore.put(domain);
+            }
+        }
+
         response.getWriter().write("C'est initialise !!");
     }
 }
