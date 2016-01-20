@@ -2,7 +2,6 @@ package training;
 
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
-import com.google.appengine.repackaged.com.google.datastore.v1.Datastore;
 import com.google.appengine.repackaged.com.google.gson.Gson;
 import model.TrainingPlan;
 
