@@ -47,6 +47,14 @@
         <servlet-name>SearchServlet</servlet-name>
         <servlet-class>training.SearchServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UserTrainings</servlet-name>
+        <servlet-class>training.UserTrainings</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserTrainings</servlet-name>
+        <url-pattern>/usertrainings</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SearchServlet</servlet-name>
         <url-pattern>/search</url-pattern>
