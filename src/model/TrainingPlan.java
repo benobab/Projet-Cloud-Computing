@@ -1,8 +1,11 @@
 package model;
 
+import com.google.appengine.api.datastore.Entities;
 import com.google.appengine.api.datastore.Entity;
+import training.UTIL;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TrainingPlan implements Serializable {

@@ -19,6 +19,30 @@
         <servlet-name>GetDomains</servlet-name>
         <servlet-class>training.GetDomains</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Connection</servlet-name>
+        <servlet-class>training.Connection</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Connection</servlet-name>
+        <url-pattern>/connection</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>FluxRss</servlet-name>
+        <servlet-class>training.FluxRss</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Deconnection</servlet-name>
+        <servlet-class>training.Deconnection</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Deconnection</servlet-name>
+        <url-pattern>/deconnection</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FluxRss</servlet-name>
+        <url-pattern>/rss</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>GetDomains</servlet-name>
         <url-pattern>/getalldomains</url-pattern>
