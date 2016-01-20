@@ -1,29 +1,20 @@
 package model;
 
-import com.google.appengine.api.datastore.DatastoreService;
-import com.google.appengine.api.datastore.DatastoreServiceFactory;
-import com.google.appengine.api.datastore.EmbeddedEntity;
 import com.google.appengine.api.datastore.Entity;
-import com.google.appengine.repackaged.com.google.api.client.util.Data;
-import com.google.appengine.repackaged.com.google.datastore.v1.Key;
-import com.google.apphosting.client.datastoreservice.app.DatastoreRpcHandler;
+import com.google.appengine.api.datastore.Key;
 
 import java.io.Serializable;
 
-/**
- * Created by Benobab on 19/01/16.
- */
 public class Exercise implements Serializable {
     private String title;
     private String description;
     private String duration;
 
-
     public Exercise() {
     }
 
-    public Entity toEntity(){
-        Entity exercice = new Entity("exercice");
+    public Entity toEntity(Key trainingPlanKey){
+        Entity exercice = new Entity("Exercise", trainingPlanKey);
         exercice.setProperty("title",this.title);
         exercice.setProperty("description",this.description);
         exercice.setProperty("duration",this.duration);

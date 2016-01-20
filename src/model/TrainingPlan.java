@@ -1,39 +1,35 @@
 package model;
 
-import com.google.appengine.api.datastore.*;
-import training.UTIL;
+import com.google.appengine.api.datastore.Entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Benobab on 19/01/16.
- */
 public class TrainingPlan implements Serializable {
     private String title;
     private String description;
     private String domain;
     private List<Exercise> exercises;
+    private String email;
 
     public TrainingPlan() {
     }
 
-    public TrainingPlan(String title, String description, String domain, List<Exercise> exercises) {
+    public TrainingPlan(String title, String description, String domain, List<Exercise> exercises, String email) {
         this.title = title;
         this.description = description;
         this.domain = domain;
         this.exercises = exercises;
+        this.email = email;
     }
 
     public Entity toEntity(){
-        //Key k = KeyFactory.Builder("trainingPlan","trainingPlan").addChild();
         Entity trainingPlan = new Entity("TrainingPlan");
-        DatastoreService datastoreService =  DatastoreServiceFactory
-                .getDatastoreService();
         trainingPlan.setProperty("title",this.title);
         trainingPlan.setProperty("description",this.description);
         trainingPlan.setProperty("domain",this.domain);
+<<<<<<< HEAD
+        trainingPlan.setProperty("email",this.email);
         com.google.appengine.api.datastore.Key key = UTIL.put(trainingPlan);
 
         List<Entity> entities = new ArrayList<>();
@@ -45,7 +41,18 @@ public class TrainingPlan implements Serializable {
             UTIL.put(entity);
             //trainingPlan.setProperty("exercise", UTIL.put(e.toEntity()));
         }
+=======
+>>>>>>> origin/master
         return trainingPlan;
+    }
+
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getTitle() {

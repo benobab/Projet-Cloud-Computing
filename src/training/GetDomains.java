@@ -18,7 +18,20 @@ import java.util.List;
 public class GetDomains extends HttpServlet {
     private final static String domains="DOMAIN";
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        /*String search = request.getParameter("searchString");
+        DatastoreService datastore = DatastoreServiceFactory
+                .getDatastoreService();
 
+        Query q = new Query(domains);
+        PreparedQuery pq = datastore.prepare(q);
+
+        List<String> domains = new ArrayList<>();
+        for (Entity result : pq.asIterable()) {
+            if((String)result.getProperty("label") == search){
+
+            }
+            domains.add((String)result.getProperty("label"));
+        }*/
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
