@@ -15,6 +15,14 @@
         <servlet-name>AddTrainingPlan</servlet-name>
         <servlet-class>training.AddTrainingPlan</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GetDomains</servlet-name>
+        <servlet-class>training.GetDomains</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetDomains</servlet-name>
+        <url-pattern>/getalldomains</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>InitBDD</servlet-name>
         <url-pattern>/initbdd</url-pattern>
