@@ -24,7 +24,7 @@ public class UserTrainings extends HttpServlet {
         DatastoreService datastore = DatastoreServiceFactory
                 .getDatastoreService();
 
-        Query.FilterPredicate filter = new Query.FilterPredicate("mail", Query.FilterOperator.EQUAL,email);
+        Query.FilterPredicate filter = new Query.FilterPredicate("email", Query.FilterOperator.EQUAL,email);
         Query q = new Query("TrainingPlan").setFilter(filter);
         PreparedQuery pq = datastore.prepare(q);
 

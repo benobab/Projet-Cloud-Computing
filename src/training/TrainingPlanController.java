@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -48,7 +49,8 @@ public class TrainingPlanController extends HttpServlet {
                 tp.setTitle((String) rTP.getProperty("title"));
                 tp.setDescription((String) rTP.getProperty("description"));
                 tp.setDomain((String) rTP.getProperty("domain"));
-                tp.setExercises(new ArrayList<>());
+                tp.setExercises(new ArrayList<Exercise>());
+                tp.setCreateDate((Date) rTP.getProperty("createDate"));
 
                 Query qE = new Query("Exercise").setAncestor(rTP.getKey());
                 PreparedQuery pdE = datastore.prepare(qE);
@@ -75,6 +77,7 @@ public class TrainingPlanController extends HttpServlet {
         if (request.getParameter(ACTION_KEY).equals("ADD")) {
             Gson gson = new Gson();
             model.TrainingPlan tp = gson.fromJson(request.getParameter(TRAINING_KEY), model.TrainingPlan.class);
+            tp.setCreateDate(new Date());
             DatastoreService datastore = DatastoreServiceFactory
                     .getDatastoreService();
             Key trKey = datastore.put(tp.toEntity());

@@ -2,20 +2,52 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="821313753574-iq5dq8rjli8nusk20dvmgsmtumul3oaq.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/js.css" rel="stylesheet">
 </head>
 <body>
 
 <div class="table-responsive">
-    <table class="table">
+    <table class="table" id="tableUserDetail">
         <tr>
-            <th>Data</th>
+            <th>Date</th>
             <th>Training Plan</th>
-            <th>Pexpected</th>
             <th>Time</th>
             <th>completed</th>
         </tr>
     </table>
 </div>
+
+<div id="patterns" style="display: none;">
+    <table>
+        <tr data-role="patternTable">
+            <td data-role="tdDate"></td>
+            <td data-role="tdTraining"></td>
+            <td data-role="tdTime"></td>
+            <td>no</td>
+        </tr>
+    </table>
+</div>
+
+
+<script src="js/jquery-1.11.1.min.js"></script>
+
+<script src="js/header.js"></script>
+<script src="js/userDetails.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+<script>
+    $(function(){
+        getUserTrainingPlans();
+    })
+</script>
+
 </body>
+
 </html>
