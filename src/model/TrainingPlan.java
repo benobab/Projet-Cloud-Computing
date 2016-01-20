@@ -1,8 +1,11 @@
 package model;
 
+import com.google.appengine.api.datastore.Entities;
 import com.google.appengine.api.datastore.Entity;
+import training.UTIL;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TrainingPlan implements Serializable {
@@ -28,7 +31,6 @@ public class TrainingPlan implements Serializable {
         trainingPlan.setProperty("title",this.title);
         trainingPlan.setProperty("description",this.description);
         trainingPlan.setProperty("domain",this.domain);
-<<<<<<< HEAD
         trainingPlan.setProperty("email",this.email);
         com.google.appengine.api.datastore.Key key = UTIL.put(trainingPlan);
 
@@ -36,13 +38,11 @@ public class TrainingPlan implements Serializable {
         Entities exercises = new Entities();
         for (Exercise e: this.exercises) {
             //datastoreService.put(e.toEntity());
-            Entity entity = e.toEntity();
+            /*Entity entity = e.toEntity();
             entity.setProperty("trainingPlan",key);
-            UTIL.put(entity);
+            UTIL.put(entity);*/
             //trainingPlan.setProperty("exercise", UTIL.put(e.toEntity()));
         }
-=======
->>>>>>> origin/master
         return trainingPlan;
     }
 
