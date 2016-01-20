@@ -15,15 +15,17 @@ public class TrainingPlan implements Serializable {
     private String description;
     private String domain;
     private List<Exercise> exercises;
+    private String email;
 
     public TrainingPlan() {
     }
 
-    public TrainingPlan(String title, String description, String domain, List<Exercise> exercises) {
+    public TrainingPlan(String title, String description, String domain, List<Exercise> exercises, String email) {
         this.title = title;
         this.description = description;
         this.domain = domain;
         this.exercises = exercises;
+        this.email = email;
     }
 
     public Entity toEntity(){
@@ -34,6 +36,7 @@ public class TrainingPlan implements Serializable {
         trainingPlan.setProperty("title",this.title);
         trainingPlan.setProperty("description",this.description);
         trainingPlan.setProperty("domain",this.domain);
+        trainingPlan.setProperty("email",this.email);
         com.google.appengine.api.datastore.Key key = UTIL.put(trainingPlan);
 
         List<Entity> entities = new ArrayList<>();
@@ -46,6 +49,15 @@ public class TrainingPlan implements Serializable {
             //trainingPlan.setProperty("exercise", UTIL.put(e.toEntity()));
         }
         return trainingPlan;
+    }
+
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getTitle() {
