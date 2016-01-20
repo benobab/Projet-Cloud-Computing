@@ -305,7 +305,7 @@
             });
             //Check values
             if (tbTrainingPlanTitle.val() && tbTrainingPlanTitle.val() != "" && tbTrainingPlanDesrciption.val() && tbTrainingPlanDesrciption.val() != "" && ddlTrainingPlanDomain.val() && ddlTrainingPlanDomain.val() != "") {
-            $.post("/addTrainingPlan",
+				$.post("/trainingPlan",
                     {
                         trainingPlan: JSON.stringify({
                             title: tbTrainingPlanTitle.val(),
@@ -313,13 +313,14 @@
                             domain: ddlTrainingPlanDomain.val(),
                             exercises: exercises,
                             email : isConnected() ?getConnectedEmail() : "null"
-                        })
+                        }),
+                        action: "ADD"
                     }
-            ).done(function (resp) {
-                document.location = "/ha-result-screen.html"
-            }).fail(function(resp) {
-               alert("TODO ERROR");
-            });
+				).done(function (resp) {
+					document.location = "/ha-result-screen.html"
+				}).fail(function(resp) {
+				   alert("TODO ERROR");
+				});
             } else {
                 alert("Le titre, la description et le domaine sont obligatoires.");
             }

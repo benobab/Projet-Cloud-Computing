@@ -27,6 +27,11 @@ public class Exercise implements Serializable {
         this.duration = duration;
     }
 
+    public static Exercise toExercice(Entity e){
+        Exercise exercise = new Exercise((String)e.getProperty("title"),(String)e.getProperty("description"),(String)e.getProperty("duration"));
+        return exercise;
+    }
+
     public String getTitle() {
         return title;
     }

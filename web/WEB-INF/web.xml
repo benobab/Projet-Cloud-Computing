@@ -8,6 +8,14 @@
         <servlet-class>training.Accueil</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>TrainingPlanServlet</servlet-name>
+        <servlet-class>training.TrainingPlanController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TrainingPlanServlet</servlet-name>
+        <url-pattern>/trainingPlan</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>InitBDD</servlet-name>
         <servlet-class>training.InitBDD</servlet-class>
     </servlet>
@@ -35,6 +43,14 @@
         <servlet-name>Deconnection</servlet-name>
         <servlet-class>training.Deconnection</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SearchServlet</servlet-name>
+        <servlet-class>training.SearchServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchServlet</servlet-name>
+        <url-pattern>/search</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Deconnection</servlet-name>
         <url-pattern>/deconnection</url-pattern>
