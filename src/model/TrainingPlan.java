@@ -1,6 +1,6 @@
 package model;
 
-import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.*;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -26,15 +26,21 @@ public class TrainingPlan implements Serializable {
     }
 
     public Entity toEntity(){
+        //Key k = KeyFactory.Builder("trainingPlan","trainingPlan").addChild();
         Entity trainingPlan = new Entity("TrainingPlan");
+        DatastoreService datastoreService =  DatastoreServiceFactory
+                .getDatastoreService();
         trainingPlan.setProperty("title",this.title);
         trainingPlan.setProperty("description",this.description);
         trainingPlan.setProperty("domain",this.domain);
         List<Entity> entities = new ArrayList<>();
+        Entities exercises = new Entities();
+        int i = 0;
         for (Exercise e: this.exercises) {
-            entities.add(e.toEntity());
+            datastoreService.put(e.toEntity());
+            trainingPlan.setProperty("exercise",e.toEntity());
+            i++;
         }
-        trainingPlan.setProperty("exercices",entities);
         return trainingPlan;
     }
 

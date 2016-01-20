@@ -1,5 +1,6 @@
 package model;
 
+import com.google.appengine.api.datastore.EmbeddedEntity;
 import com.google.appengine.api.datastore.Entity;
 
 import java.io.Serializable;
@@ -17,7 +18,7 @@ public class Exercise implements Serializable {
     }
 
     public Entity toEntity(){
-        Entity exercice = new Entity("Exercise");
+        Entity exercice = new Entity("exercice");
         exercice.setProperty("title",this.title);
         exercice.setProperty("description",this.description);
         exercice.setProperty("duration",this.duration);

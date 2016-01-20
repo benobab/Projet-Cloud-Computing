@@ -1,5 +1,8 @@
 package training;
 
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.repackaged.com.google.datastore.v1.Datastore;
 import com.google.appengine.repackaged.com.google.gson.Gson;
 import model.TrainingPlan;
 
@@ -14,13 +17,14 @@ import java.io.IOException;
  */
 public class AddTrainingPlan extends HttpServlet {
     private static final String trainingKey = "trainingPlan";
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
             Gson gson = new Gson();
             TrainingPlan tp = gson.fromJson(request.getParameter(trainingKey), TrainingPlan.class);
-    }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        DatastoreService datastore = DatastoreServiceFactory
+                .getDatastoreService();
+        datastore.put(tp.toEntity());
     }
 }

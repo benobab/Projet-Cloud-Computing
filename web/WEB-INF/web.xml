@@ -26,4 +26,8 @@
         <servlet-name>Accueil</servlet-name>
         <url-pattern>/gethomemessage</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddTrainingPlan</servlet-name>
+        <url-pattern>/addTrainingPlan</url-pattern>
+    </servlet-mapping>
 </web-app>
