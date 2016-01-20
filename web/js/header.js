@@ -15,6 +15,12 @@ function onSignIn(googleUser) {
     window.localStorage.email = profile.getEmail();
     displayUser();
 
+    $.post("/connection",{email:profile.getEmail(),name:profile.getName()}).done(function(){
+        console.log("ok lors de la connection");
+    }).fail(function(){
+        console.log("ko lors de la connection");
+    });
+
 
 };
 
@@ -22,6 +28,11 @@ function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
         console.log('User signed out.');
+        $.post("/deconnection",{name:window.localStorage.name}).done(function(){
+            console.log("ok deco");
+        }).fail(function(){
+            console.log("ko deco");
+        });
         window.localStorage.clear();
         $("#buttonGoogleLogout").css("display", "none");
         $("#buttonGoogleLogin").css("display", "block");

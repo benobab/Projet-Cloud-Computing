@@ -17,7 +17,7 @@ import java.util.Map;
 /**
  * Created by Benobab on 20/01/16.
  */
-public class Connection extends HttpServlet {
+public class Deconnection extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Cache cache = null;
         try {
@@ -32,9 +32,8 @@ public class Connection extends HttpServlet {
                 users = new HashMap<>();
             }
             String name = request.getParameter("name");
-            String email = request.getParameter("email");
-            if(name != null && email != null){
-                users.put(name,email);
+            if(name != null){
+                users.remove(name);
                 cache.put("users",users);
             }
         } catch ( net.sf.jsr107cache.CacheException e) {
