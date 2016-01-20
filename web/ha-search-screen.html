@@ -14,6 +14,7 @@
     <link href="css/js.css" rel="stylesheet">
 
       <script src="js/searchPage.js"></script>
+      <script src="js/header.js"></script>
       
 
   </head>
@@ -23,9 +24,9 @@
       <nav class="navbar navbar-inverse" role="navigation">
         <div class=" col-md-8 col-sm-10 col-xs-10 ">
             <form class="navbar-form navbar-left"  style="width:100%" role="search">
-                <button type="submit" class="btn btn-default">Search</button>
+                <button type="button" class="btn btn-default" onclick="search();">Search</button>
                 <div class="form-group"  style="width:90%">
-                    <input type="text"  style="width:100%" class="form-control" placeholder="Search">
+                    <input type="text"  style="width:100%" class="form-control" placeholder="Search" id="inputSearch">
                 </div>
           </form>
         </div>
@@ -43,6 +44,12 @@
       
       <div class=" col-md-12 col-sm-12 col-xs-12 " style="margin-bottom:40px">
           <h3> Your Domain</h3>
+      </div>
+
+      <div id="listDomains">
+          <div class=" col-md-12 col-sm-12 col-xs-12" style="margin-bottom:80px;" data-role="listDomains">
+
+          </div>
       </div>
       
       <!-- ------------------------------------------- FOOTER ZONE ------------------------------------------- -->
@@ -62,14 +69,13 @@
     <script src="js/bootstrap.min.js"></script>
     <script>
         $(function(){
-            testConnection();
             getAllDomaine();
         })
     </script>
 
-    <div id="templates">
-          <div class=" col-md-12 col-sm-12 col-xs-12" style="margin-bottom:80px; display:none;" data-role="patternLigne">
-              <div class=" col-md-3 col-sm-3 col-xs-3" data-role="patternColon">
+    <div id="templates" style="display:none;">
+          <div class=" col-md-12 col-sm-12 col-xs-12" data-role="patternLigne">
+              <div class=" col-md-3 col-sm-3 col-xs-3" data-role="patternColon" style="margin-bottom:80px;">
                 <button type="submit" class="btn btn-default btn-lg" data-role="paternButton"><span class="glyphicon glyphicon-tree-deciduous"></span></button> <label data-role="paternLabel"> RUN </label>
               </div>
           </div>

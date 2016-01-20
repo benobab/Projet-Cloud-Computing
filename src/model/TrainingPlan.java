@@ -32,6 +32,7 @@ public class TrainingPlan implements Serializable {
         trainingPlan.setProperty("description",this.description);
         trainingPlan.setProperty("domain",this.domain);
         trainingPlan.setProperty("email",this.email);
+<<<<<<< HEAD
         com.google.appengine.api.datastore.Key key = UTIL.put(trainingPlan);
 
         List<Entity> entities = new ArrayList<>();
@@ -43,6 +44,8 @@ public class TrainingPlan implements Serializable {
             UTIL.put(entity);*/
             //trainingPlan.setProperty("exercise", UTIL.put(e.toEntity()));
         }
+=======
+>>>>>>> origin/master
         return trainingPlan;
     }
 

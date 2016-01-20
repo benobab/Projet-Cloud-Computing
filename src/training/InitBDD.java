@@ -18,7 +18,7 @@ public class InitBDD extends HttpServlet {
     private static final String DOMAIN = "DOMAIN";
     private static final String DOMAIN_PROPERTY = "label";
 
-    private static final String[] LISTSTRINGDOMAINS = {"Running", "Volleyball", "Boxe", "BaseBall"};
+    private static final String[] LISTSTRINGDOMAINS = {"Running", "Volleyball", "Boxe", "BaseBall", "Kitesurf", "VTT", "GYM", "TACOS"};
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

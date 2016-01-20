@@ -68,10 +68,6 @@
         <div class=" col-md-6 col-sm-6 col-xs-12 ">
             <p>
                 <select id="trainingDomain" class="select2-container populate" style="width:100%">
-                    <option value="Running">Running</option>
-                    <option value="Volleyball">Volleyball</option>
-                    <option value="Boxe">Boxe</option>
-                    <option value="BaseBall">BaseBall</option>
                 </select>
             </p>
         </div>
@@ -175,6 +171,7 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.min.js"></script>
 <script src="lib/select2-3.5.1/select2.min.js"></script>
+<script src="js/UTIL.js"></script>
 <script>
 
     function addTrainingJS() {
@@ -204,6 +201,14 @@
                 +resetTotalDuration();
             });
             resetTotalDuration();
+
+            $.get("/getalldomains",function(data,status){
+                var dataParsed = JSON.parse(data);
+                for(var d in dataParsed){
+                    $("#trainingDomain").append('<option value="'+ dataParsed[d] + '">'+dataParsed[d]+'</option>"');
+                }
+            });
+
         });
 
         btAddExercise.click(function () {
@@ -306,7 +311,8 @@
                             title: tbTrainingPlanTitle.val(),
                             description: tbTrainingPlanDesrciption.val(),
                             domain: ddlTrainingPlanDomain.val(),
-                            exercises: exercises
+                            exercises: exercises,
+                            email : isConnected() ?getConnectedEmail() : "null"
                         })
                     }
             ).done(function (resp) {
