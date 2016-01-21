@@ -10,15 +10,43 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/js.css" rel="stylesheet">
+
+    <script src="js/jquery-1.11.1.min.js"></script>
+
+    <script src="js/searchPage.js"></script>
+    <script src="js/header.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
 </head>
 <body>
+
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class=" col-md-8 col-sm-10 col-xs-10 ">
+        <form class="navbar-form navbar-left"  style="width:100%" role="search">
+            <button type="button" class="btn btn-default" onclick="search();">Search</button>
+            <div class="form-group"  style="width:90%">
+                <input type="text"  style="width:100%" class="form-control" placeholder="Search" id="inputSearch">
+            </div>
+        </form>
+    </div>
+
+    <div class=" col-md-4 col-sm-2 col-xs-2 ">
+        <form class="navbar-form navbar-left"  style="width:100%" role="search">
+            <div style="display: inline-block">
+                <div class="g-signin2" id="buttonGoogleLogin" data-onsuccess="onSignIn" data-theme="dark"></div>
+                <span id="divDisplayUser" style="color:white; display: none"></span>
+            </div>
+        </form>
+    </div>
+</nav>
 
 <div class="table-responsive">
     <table class="table" id="tableUserDetail">
         <tr>
             <th>Date</th>
             <th>Training Plan</th>
-            <th>Time</th>
+            <th>Exercise</th>
             <th>completed</th>
         </tr>
     </table>
@@ -29,26 +57,12 @@
         <tr data-role="patternTable">
             <td data-role="tdDate"></td>
             <td data-role="tdTraining"></td>
-            <td data-role="tdTime"></td>
-            <td>no</td>
+            <td data-role="tdExercise"></td>
+            <td><span class="glyphicon glyphicon-ok" style="color:green"></span></td>
         </tr>
     </table>
 </div>
 
-
-<script src="js/jquery-1.11.1.min.js"></script>
-
-<script src="js/header.js"></script>
-<script src="js/userDetails.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
-<script>
-    $(function(){
-        getUserTrainingPlans();
-    })
-</script>
-
-</body>
 <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
     <div class=" col-md-10 col-sm-10 col-xs-10 ">
         <form class="navbar-form navbar-left" style="width:100%" role="search">
@@ -57,4 +71,15 @@
         </form>
     </div>
 </nav>
+
+
+<script src="js/userDetails.js"></script>
+
+<script>
+    $(function(){
+        getUserValidatedExercises();
+    })
+</script>
+
+</body>
 </html>

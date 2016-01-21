@@ -9,6 +9,7 @@ public class Exercise implements Serializable {
     private String title;
     private String description;
     private String duration;
+    private long id;
 
     public Exercise() {
     }
@@ -54,5 +55,13 @@ public class Exercise implements Serializable {
 
     public void setDuration(String duration) {
         this.duration = duration;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }
