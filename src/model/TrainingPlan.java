@@ -16,6 +16,7 @@ public class TrainingPlan implements Serializable {
     private List<Exercise> exercises;
     private Date createDate;
     private String email;
+    private long id;
 
     public TrainingPlan() {
     }
@@ -35,18 +36,18 @@ public class TrainingPlan implements Serializable {
         this.email = email;
     }
 
-    public Entity toEntity(){
+    public Entity toEntity() {
         Entity trainingPlan = new Entity("TrainingPlan");
-        trainingPlan.setProperty("title",this.title);
-        trainingPlan.setProperty("description",this.description);
-        trainingPlan.setProperty("domain",this.domain);
-        trainingPlan.setProperty("email",this.email);
+        trainingPlan.setProperty("title", this.title);
+        trainingPlan.setProperty("description", this.description);
+        trainingPlan.setProperty("domain", this.domain);
+        trainingPlan.setProperty("email", this.email);
         trainingPlan.setProperty("createDate", this.createDate);
         return trainingPlan;
     }
 
-    public static  TrainingPlan toTrainingPlan(Entity e, List<Exercise> listExercice){
-        TrainingPlan trainingPlan = new TrainingPlan((String)e.getProperty("title"),(String)e.getProperty("description"),(String)e.getProperty("domain"),listExercice, (String)e.getProperty("email"));
+    public static TrainingPlan toTrainingPlan(Entity e, List<Exercise> listExercice) {
+        TrainingPlan trainingPlan = new TrainingPlan((String) e.getProperty("title"), (String) e.getProperty("description"), (String) e.getProperty("domain"), listExercice, (String) e.getProperty("email"));
         trainingPlan.setCreateDate((Date) e.getProperty("createDate"));
         return trainingPlan;
     }
@@ -98,5 +99,13 @@ public class TrainingPlan implements Serializable {
 
     public void setExercises(List<Exercise> exercises) {
         this.exercises = exercises;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public long getId() {
+        return this.id;
     }
 }

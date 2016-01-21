@@ -46,7 +46,7 @@
         <tr>
             <th>Date</th>
             <th>Training Plan</th>
-            <th>Time</th>
+            <th>Exercise</th>
             <th>completed</th>
         </tr>
     </table>
@@ -57,8 +57,8 @@
         <tr data-role="patternTable">
             <td data-role="tdDate"></td>
             <td data-role="tdTraining"></td>
-            <td data-role="tdTime"></td>
-            <td>no</td>
+            <td data-role="tdExercise"></td>
+            <td><span class="glyphicon glyphicon-ok" style="color:green"></span></td>
         </tr>
     </table>
 </div>
@@ -77,7 +77,7 @@
 
 <script>
     $(function(){
-        getUserTrainingPlans();
+        getUserValidatedExercises();
     })
 </script>
 

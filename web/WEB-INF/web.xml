@@ -8,6 +8,10 @@
         <servlet-class>training.Accueil</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ValidTraining</servlet-name>
+        <servlet-class>training.ValidTraining</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>TrainingPlanServlet</servlet-name>
         <servlet-class>training.TrainingPlanController</servlet-class>
     </servlet>
@@ -89,5 +93,9 @@
     <servlet-mapping>
         <servlet-name>UserTrainings</servlet-name>
         <url-pattern>/UserTrainings</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ValidTraining</servlet-name>
+        <url-pattern>/validtrainingexercise</url-pattern>
     </servlet-mapping>
 </web-app>
