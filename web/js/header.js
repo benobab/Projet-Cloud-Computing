@@ -52,7 +52,7 @@ function displayUser(){
     $("#buttonGoogleLogout").css("display", "block");
     $("#buttonGoogleLogin").css("display", "none");
     $("#divDisplayUser").css("display", "block");
-    $("#divDisplayUser").html("<span> " + window.localStorage.name +" | "+ window.localStorage.email + "</span> " + "<input type='button' value='Logout' class='btn btn-danger'' id='buttonGoogleLogout' onclick='signOut();'/>");
+    $("#divDisplayUser").html("<a href='/userdetails.html'> " + window.localStorage.name +" | "+ window.localStorage.email + "</a> " + "<input type='button' value='Logout' class='btn btn-danger'' id='buttonGoogleLogout' onclick='signOut();'/>");
 }
 
 $(function() {

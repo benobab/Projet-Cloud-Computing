@@ -4,6 +4,9 @@ import com.google.appengine.api.datastore.*;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.taskqueue.Queue;
+import com.google.appengine.api.taskqueue.QueueFactory;
+import com.google.appengine.api.taskqueue.TaskOptions;
 import com.google.appengine.repackaged.com.google.datastore.v1.*;
 import com.google.appengine.repackaged.com.google.gson.Gson;
 import model.Exercise;
@@ -52,6 +55,7 @@ public class TrainingPlanController extends HttpServlet {
                 tp.setExercises(new ArrayList<Exercise>());
                 tp.setCreateDate((Date) rTP.getProperty("createDate"));
 
+
                 Query qE = new Query("Exercise").setAncestor(rTP.getKey());
                 PreparedQuery pdE = datastore.prepare(qE);
                 for (Entity rE : pdE.asIterable()) {
@@ -75,16 +79,10 @@ public class TrainingPlanController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         if (request.getParameter(ACTION_KEY).equals("ADD")) {
-            Gson gson = new Gson();
-            model.TrainingPlan tp = gson.fromJson(request.getParameter(TRAINING_KEY), model.TrainingPlan.class);
-            tp.setCreateDate(new Date());
-            DatastoreService datastore = DatastoreServiceFactory
-                    .getDatastoreService();
-            Key trKey = datastore.put(tp.toEntity());
-            for (Exercise exercice : tp.getExercises()) {
-                datastore.put(exercice.toEntity(trKey));
-            }
-            response.setStatus(200);
+            Queue queue = QueueFactory.getDefaultQueue();
+            TaskOptions task = TaskOptions.Builder.withUrl("/addtraining").param(TRAINING_KEY,request.getParameter(TRAINING_KEY));
+            queue.add(task);
+
         }
 
     }

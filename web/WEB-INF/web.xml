@@ -47,6 +47,14 @@
         <servlet-name>UserTrainings</servlet-name>
         <servlet-class>training.UserTrainings</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddTraining</servlet-name>
+        <servlet-class>training.AddTraining</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddTraining</servlet-name>
+        <url-pattern>/addtraining</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UserTrainings</servlet-name>
         <url-pattern>/usertrainings</url-pattern>
