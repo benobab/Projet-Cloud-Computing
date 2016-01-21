@@ -90,4 +90,12 @@
         <servlet-name>UserTrainings</servlet-name>
         <url-pattern>/UserTrainings</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>TokenChannelGeneratorServlet</servlet-name>
+        <servlet-class>training.TokenChannelGeneratorServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TokenChannelGeneratorServlet</servlet-name>
+        <url-pattern>/token</url-pattern>
+    </servlet-mapping>
 </web-app>
