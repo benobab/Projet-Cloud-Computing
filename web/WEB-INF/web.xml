@@ -20,10 +20,6 @@
         <servlet-class>training.InitBDD</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AddTrainingPlan</servlet-name>
-        <servlet-class>training.AddTrainingPlan</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>GetDomains</servlet-name>
         <servlet-class>training.GetDomains</servlet-class>
     </servlet>
@@ -51,6 +47,14 @@
         <servlet-name>UserTrainings</servlet-name>
         <servlet-class>training.UserTrainings</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddTraining</servlet-name>
+        <servlet-class>training.AddTraining</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddTraining</servlet-name>
+        <url-pattern>/addtraining</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UserTrainings</servlet-name>
         <url-pattern>/usertrainings</url-pattern>
@@ -81,9 +85,5 @@
     <servlet-mapping>
         <servlet-name>Accueil</servlet-name>
         <url-pattern>/gethomemessage</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AddTrainingPlan</servlet-name>
-        <url-pattern>/addTrainingPlan</url-pattern>
     </servlet-mapping>
 </web-app>
