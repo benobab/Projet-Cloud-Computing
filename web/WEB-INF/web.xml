@@ -86,4 +86,11 @@
         <servlet-name>Accueil</servlet-name>
         <url-pattern>/gethomemessage</url-pattern>
     </servlet-mapping>
+<<<<<<< HEAD
+=======
+    <servlet-mapping>
+        <servlet-name>UserTrainings</servlet-name>
+        <url-pattern>/UserTrainings</url-pattern>
+    </servlet-mapping>
+>>>>>>> origin/master
 </web-app>

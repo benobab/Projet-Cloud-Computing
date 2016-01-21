@@ -6,6 +6,7 @@ import training.UTIL;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class TrainingPlan implements Serializable {
@@ -13,8 +14,17 @@ public class TrainingPlan implements Serializable {
     private String description;
     private String domain;
     private List<Exercise> exercises;
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    private Date createDate;
     private String email;
-    private String duration;
 
     public TrainingPlan() {
     }
@@ -40,25 +50,19 @@ public class TrainingPlan implements Serializable {
         trainingPlan.setProperty("description",this.description);
         trainingPlan.setProperty("domain",this.domain);
         trainingPlan.setProperty("email",this.email);
+        trainingPlan.setProperty("createDate", this.createDate);
         return trainingPlan;
     }
 
     public static  TrainingPlan toTrainingPlan(Entity e, List<Exercise> listExercice){
         TrainingPlan trainingPlan = new TrainingPlan((String)e.getProperty("title"),(String)e.getProperty("description"),(String)e.getProperty("domain"),listExercice, (String)e.getProperty("email"));
+        trainingPlan.setCreateDate((Date) e.getProperty("createDate"));
         return trainingPlan;
     }
 
 
     public String getEmail() {
         return email;
-    }
-
-    public String getDuration() {
-        return duration;
-    }
-
-    public void setDuration(String duration) {
-        this.duration = duration;
     }
 
     public void setEmail(String email) {
