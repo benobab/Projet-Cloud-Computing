@@ -14,15 +14,6 @@ public class TrainingPlan implements Serializable {
     private String description;
     private String domain;
     private List<Exercise> exercises;
-
-    public Date getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
-    }
-
     private Date createDate;
     private String email;
 
@@ -60,6 +51,14 @@ public class TrainingPlan implements Serializable {
         return trainingPlan;
     }
 
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
 
     public String getEmail() {
         return email;

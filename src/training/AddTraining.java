@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Date;
 
 /**
  * Created by Benobab on 21/01/16.
@@ -28,7 +29,7 @@ public class AddTraining extends HttpServlet {
         model.TrainingPlan tp = gson.fromJson(request.getParameter(TRAINING_KEY), model.TrainingPlan.class);
         DatastoreService datastore = DatastoreServiceFactory
                 .getDatastoreService();
-
+        tp.setCreateDate(new Date());
         Key trKey = datastore.put(tp.toEntity());
         for (Exercise exercice : tp.getExercises()) {
             datastore.put(exercice.toEntity(trKey));
