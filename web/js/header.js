@@ -46,6 +46,8 @@ function testConnection(){
     }
 }
 
+//TODO lol
+
 function displayUser(){
     $("#buttonGoogleLogout").css("display", "block");
     $("#buttonGoogleLogin").css("display", "none");
