@@ -10,7 +10,13 @@ getResearch = function(){
         for(var i = 0; i < dataParsed.trainingPlans.length; i++){
             dataParsed.trainingPlans[i].duration = resetTotalDuration(dataParsed.trainingPlans[i].exercises);
             var newHtmlPlan = trainingPlanPatern.clone();
-            newHtmlPlan.find("[data-role='labelTraining']").html(dataParsed.trainingPlans[i].title);
+            newHtmlPlan.find("[data-role='labelTraining']")
+                .html(dataParsed.trainingPlans[i].title)
+                .attr("trainingPlanId", dataParsed.trainingPlans[i].id)
+                .click(function() {
+                var trainingPlanId = $(this).attr('trainingPlanId');
+                document.location = "/ha-result-detail-screen.html?id=" + trainingPlanId;
+            });
             newHtmlPlan.find("[data-role='labelDuration']").html(dataParsed.trainingPlans[i].duration);
             $("#trainingPlansList").append(newHtmlPlan);
 
@@ -18,12 +24,19 @@ getResearch = function(){
         var exercisePatern = $("#patterns").find('[data-role="patternExercise"]');
         for(var j = 0; j < dataParsed.exercises.length; j++){
             var newHtmlExercise = exercisePatern.clone();
-            newHtmlExercise.find("[data-role='labelExercise']").html(dataParsed.exercises[j].title);
+            newHtmlExercise.find("[data-role='labelExercise']")
+                .html(dataParsed.exercises[j].title)
+                .attr("trainingPlanId", dataParsed.exercises[j].trainingPlanId)
+                .click(function() {
+                var trainingPlanId = $(this).attr('trainingPlanId');
+                document.location = "/ha-result-detail-screen.html?id=" + trainingPlanId;
+            });
             newHtmlExercise.find("[data-role='labelDuration']").html(dataParsed.exercises[j].duration);
             $("#listExercises").append(newHtmlExercise);
         }
     }).fail(function(){
     });
+
 }
 
 
@@ -88,4 +101,5 @@ var queryParameters = function () {
 
 $(function(){
    getResearch();
+
 });

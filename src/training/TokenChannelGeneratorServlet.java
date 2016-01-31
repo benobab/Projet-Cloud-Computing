@@ -50,7 +50,8 @@ public class TokenChannelGeneratorServlet extends HttpServlet {
             loginTokenMap.put(currentLogin, token);
         } else {
             token = loginTokenMap.get(currentLogin);
-        } resp.setContentType("application/json");
+        }
+        resp.setContentType("application/json");
         JSONObject jsonToSend;
         try {
             jsonToSend = new JSONObject("{'token':" + token + "}");

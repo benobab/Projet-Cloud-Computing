@@ -10,6 +10,7 @@ public class Exercise implements Serializable {
     private String description;
     private String duration;
     private long id;
+    private long trainingPlanId;
 
     public Exercise() {
     }
@@ -22,14 +23,15 @@ public class Exercise implements Serializable {
         return exercice;
     }
 
-    public Exercise(String title, String description, String duration) {
+    public Exercise(String title, String description, String duration, long trainingPlanId) {
         this.title = title;
         this.description = description;
         this.duration = duration;
+        this.trainingPlanId = trainingPlanId;
     }
 
     public static Exercise toExercice(Entity e){
-        Exercise exercise = new Exercise((String)e.getProperty("title"),(String)e.getProperty("description"),(String)e.getProperty("duration"));
+        Exercise exercise = new Exercise((String)e.getProperty("title"),(String)e.getProperty("description"),(String)e.getProperty("duration"), e.getParent().getId());
         return exercise;
     }
 
