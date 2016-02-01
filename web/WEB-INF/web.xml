@@ -94,7 +94,7 @@
         <servlet-name>UserTrainings</servlet-name>
         <url-pattern>/UserTrainings</url-pattern>
     </servlet-mapping>
-<<<<<<< HEAD
+
     <servlet>
         <servlet-name>TokenChannelGeneratorServlet</servlet-name>
         <servlet-class>training.TokenChannelGeneratorServlet</servlet-class>
@@ -102,10 +102,10 @@
     <servlet-mapping>
         <servlet-name>TokenChannelGeneratorServlet</servlet-name>
         <url-pattern>/token</url-pattern>
-=======
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ValidTraining</servlet-name>
         <url-pattern>/validtrainingexercise</url-pattern>
->>>>>>> origin/master
+
     </servlet-mapping>
 </web-app>
