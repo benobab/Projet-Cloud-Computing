@@ -5,7 +5,6 @@
 getResearch = function(){
 
     $.post("/search", {keywords : queryParameters.search}).done(function(data, textStatus){
-        console.log("Ok récupération de la recherche");
         var dataParsed = JSON.parse(data);
         var trainingPlanPatern = $('#patterns').find('[data-role="patternTraining"]');
         for(var i = 0; i < dataParsed.trainingPlans.length; i++){
@@ -23,9 +22,7 @@ getResearch = function(){
             newHtmlExercise.find("[data-role='labelDuration']").html(dataParsed.exercises[j].duration);
             $("#listExercises").append(newHtmlExercise);
         }
-        console.log("LOL");
     }).fail(function(){
-        console.log("Erreur récupération de la recherche");
     });
 }
 

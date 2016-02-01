@@ -30,6 +30,10 @@ public class TrainingPlanController extends HttpServlet {
     private static final String ACTION_KEY = "action";
     private static final String TRAINING_ID_KEY = "trainingPlanId";
 
+    private static final String EXERCISEID_KEY = "exerciseId";
+    private static final String EXERCISE_KEY = "exercise";
+    private static final String EMAIL_KEY = "email";
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -54,7 +58,7 @@ public class TrainingPlanController extends HttpServlet {
                 tp.setDomain((String) rTP.getProperty("domain"));
                 tp.setExercises(new ArrayList<Exercise>());
                 tp.setCreateDate((Date) rTP.getProperty("createDate"));
-
+                tp.setId(rTP.getKey().getId());
 
                 Query qE = new Query("Exercise").setAncestor(rTP.getKey());
                 PreparedQuery pdE = datastore.prepare(qE);
@@ -64,6 +68,7 @@ public class TrainingPlanController extends HttpServlet {
                     e.setTitle((String) rE.getProperty("title"));
                     e.setDescription((String) rE.getProperty("description"));
                     e.setDuration((String) rE.getProperty("duration"));
+                    e.setId(rE.getKey().getId());
                     tp.getExercises().add(e);
 
                 }
@@ -80,9 +85,18 @@ public class TrainingPlanController extends HttpServlet {
 
         if (request.getParameter(ACTION_KEY).equals("ADD")) {
             Queue queue = QueueFactory.getDefaultQueue();
-            TaskOptions task = TaskOptions.Builder.withUrl("/addtraining").param(TRAINING_KEY,request.getParameter(TRAINING_KEY));
+            TaskOptions task = TaskOptions.Builder.withUrl("/addtraining").param(TRAINING_KEY, request.getParameter(TRAINING_KEY));
             queue.add(task);
 
+        } else if (request.getParameter(ACTION_KEY).equals("VALIDEXERCISE")) {
+            Queue queue = QueueFactory.getDefaultQueue();
+            TaskOptions task = TaskOptions.Builder.withUrl("/validtrainingexercise")
+                    .param(TRAINING_ID_KEY, request.getParameter(TRAINING_ID_KEY))
+                    .param(EXERCISEID_KEY, request.getParameter(EXERCISEID_KEY))
+                    .param(EMAIL_KEY, request.getParameter(EMAIL_KEY))
+                    .param(TRAINING_KEY, request.getParameter(TRAINING_KEY))
+                    .param(EXERCISE_KEY, request.getParameter(EXERCISE_KEY));
+            queue.add(task);
         }
 
     }

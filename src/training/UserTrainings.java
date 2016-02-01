@@ -3,6 +3,7 @@ package training;
 import com.google.appengine.api.datastore.*;
 import com.google.appengine.repackaged.com.google.gson.Gson;
 import model.Exercise;
+import model.ExerciseValidated;
 import model.SearchObject;
 import model.TrainingPlan;
 
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -25,22 +27,22 @@ public class UserTrainings extends HttpServlet {
                 .getDatastoreService();
 
         Query.FilterPredicate filter = new Query.FilterPredicate("email", Query.FilterOperator.EQUAL,email);
-        Query q = new Query("TrainingPlan").setFilter(filter);
+        Query q = new Query("ExerciseValidated").setFilter(filter);
         PreparedQuery pq = datastore.prepare(q);
 
-        List<TrainingPlan> trainingPlans = new ArrayList<>();
+        List<ExerciseValidated> returned = new ArrayList<>();
         for (Entity result : pq.asIterable()) {
-            Query queryExercice = new Query("Exercise").setAncestor(result.getKey());
-            PreparedQuery preparedQueryExercise = datastore.prepare(queryExercice);
-            List<Exercise> listEx = new ArrayList<>();
-            for(Entity resultExercise : preparedQueryExercise.asIterable()){
-                listEx.add(Exercise.toExercice(resultExercise));
-            }
-            trainingPlans.add(TrainingPlan.toTrainingPlan(result, listEx));
+            ExerciseValidated e = new ExerciseValidated();
+            e.setDate((Date) result.getProperty("date"));
+            e.setEmail((String) result.getProperty("email"));
+            e.setExercise((String)result.getProperty("exercise"));
+            e.setExerciseId((long)result.getProperty("exerciseId"));
+            e.setTrainingPlan((String) result.getProperty("trainingPlan"));
+            e.setTrainingPlanId((long)result.getProperty("trainingPlanId"));
+            returned.add(e);
         }
 
         Gson gson = new Gson();
-        SearchObject searchObject = new SearchObject(new ArrayList<Exercise>(),trainingPlans);
-        response.getWriter().write(gson.toJson(searchObject));
+        response.getWriter().write(gson.toJson(returned));
     }
 }
