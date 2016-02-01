@@ -13,7 +13,7 @@
     </facet>
     <facet type="google-app-engine" name="Google App Engine">
       <configuration>
-        <sdk-home-path>$USER_HOME$/Downloads/appengine-java-sdk-1.9.31</sdk-home-path>
+        <sdk-home-path>$MODULE_DIR$/../../appengine-java-sdk-1.9.31</sdk-home-path>
       </configuration>
     </facet>
   </component>
