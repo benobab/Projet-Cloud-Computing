@@ -1,5 +1,10 @@
 **Projet déployé sur le cloud [ici](https://projethd-1195.appspot.com)**
 
+# Etudiants 
+- Nicolas Sagon
+- Benjamin Lacroix
+- Thibault Boksebeld
+
 # Architecture
 API en Java EE via des servlets, task, etc.
 
@@ -71,7 +76,7 @@ Cache cache = null;
 
 ```
 
-- Page de Recherche, permettant ainsi de voir la recherche avec ancestor, pour les exercices dans les trainingPlans par exemple, mais aussi de voir les queryFilter. On lui envoie une liste de mot clé.
+- Page de Recherche, permettant ainsi de voir la recherche avec ancestor, pour les exercices dans les trainingPlans par exemple, mais aussi de voir les queryFilter. On lui envoie une liste de mot clé. La recherche est stricte !
 
 ```JAVA
 String searchKeyWords = request.getParameter("keywords");
