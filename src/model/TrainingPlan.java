@@ -21,19 +21,21 @@ public class TrainingPlan implements Serializable {
     public TrainingPlan() {
     }
 
-    public TrainingPlan(String title, String description, String domain, List<Exercise> exercises, String email) {
+    public TrainingPlan(String title, String description, String domain, List<Exercise> exercises, String email, long id) {
         this.title = title;
         this.description = description;
         this.domain = domain;
         this.exercises = exercises;
         this.email = email;
+        this.id = id;
     }
 
-    public TrainingPlan(String title, String description, String domain, String email) {
+    public TrainingPlan(String title, String description, String domain, String email, long id) {
         this.title = title;
         this.description = description;
         this.domain = domain;
         this.email = email;
+        this.id = id;
     }
 
     public Entity toEntity() {
@@ -47,7 +49,7 @@ public class TrainingPlan implements Serializable {
     }
 
     public static TrainingPlan toTrainingPlan(Entity e, List<Exercise> listExercice) {
-        TrainingPlan trainingPlan = new TrainingPlan((String) e.getProperty("title"), (String) e.getProperty("description"), (String) e.getProperty("domain"), listExercice, (String) e.getProperty("email"));
+        TrainingPlan trainingPlan = new TrainingPlan((String) e.getProperty("title"), (String) e.getProperty("description"), (String) e.getProperty("domain"), listExercice, (String) e.getProperty("email"), e.getKey().getId());
         trainingPlan.setCreateDate((Date) e.getProperty("createDate"));
         return trainingPlan;
     }

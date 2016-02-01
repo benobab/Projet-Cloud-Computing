@@ -204,7 +204,6 @@
         var trExerciseTemplate = $('#templates').find('tr[data-role="exerciseListItemTemplate"]');
 
         $(function () {
-            ddlTrainingPlanDomain.select2();
             gridExercisesList.on("click", "button[data-role='deleteExerciseListItem']", function () {
                 $(this).closest('tr[data-role="exerciseListItemTemplate"]').remove();
                 tbExerciseTitle.val("");
@@ -214,9 +213,16 @@
 
             $.get("/getalldomains",function(data,status){
                 var dataParsed = JSON.parse(data);
-                for(var d in dataParsed){
-                    $("#trainingDomain").append('<option value="'+ dataParsed[d] + '">'+dataParsed[d]+'</option>"');
+                var first = true;;
+                for(var d in dataParsed) {
+                    var nextOption=$('<option value="'+ dataParsed[d] + '">'+dataParsed[d]+'</option>');
+                    if (first == true) {
+                        nextOption.attr("selected", "selected");
+                        first = false;
+                    }
+                    ddlTrainingPlanDomain.append(nextOption);
                 }
+                ddlTrainingPlanDomain.select2();
             });
 
         });
@@ -313,31 +319,37 @@
                 }
                 exercises.push(ex);
             });
-            //Check values
-            if (tbTrainingPlanTitle.val() && tbTrainingPlanTitle.val() != "" && tbTrainingPlanDesrciption.val() && tbTrainingPlanDesrciption.val() != "" && ddlTrainingPlanDomain.val() && ddlTrainingPlanDomain.val() != "") {
-				$.post("/trainingPlan",
-                    {
-                        trainingPlan: JSON.stringify({
-                            title: tbTrainingPlanTitle.val(),
-                            description: tbTrainingPlanDesrciption.val(),
-                            domain: ddlTrainingPlanDomain.val(),
-                            exercises: exercises,
-                            email : isConnected() ?getConnectedEmail() : "null"
-                        }),
-                        action: "ADD"
-                    }
-				).done(function (resp) {
-					document.location = "/ha-result-screen.html"
-				}).fail(function(resp) {
-				   alert("TODO ERROR");
-				});
+            if (exercises.length == 0) {
+                alert("Au moins un exercice doit être ajouté.");
             } else {
-                alert("Le titre, la description et le domaine sont obligatoires.");
+                //Check values
+                if (tbTrainingPlanTitle.val() && tbTrainingPlanTitle.val() != "" && tbTrainingPlanDesrciption.val() && tbTrainingPlanDesrciption.val() != "" && ddlTrainingPlanDomain.val() && ddlTrainingPlanDomain.val() != "") {
+                    $.post("/trainingPlan",
+                            {
+                                trainingPlan: JSON.stringify({
+                                    title: tbTrainingPlanTitle.val(),
+                                    description: tbTrainingPlanDesrciption.val(),
+                                    domain: ddlTrainingPlanDomain.val(),
+                                    exercises: exercises,
+                                    email: isConnected() ? getConnectedEmail() : "null"
+                                }),
+                                action: "ADD"
+                            }
+                    ).done(function (resp) {
+                        setTimeout(function(){
+                            //do what you need here
+                            document.location = "/ha-result-screen.html?search=" + tbTrainingPlanTitle.val();
+                        }, 1000);
+                    }).fail(function (resp) {
+                    });
+                } else {
+                    alert("Le titre, la description et le domaine sont obligatoires.");
+                }
             }
         });
 
         btCancelAddTrainingPlan.click(function () {
-            document.location = "/ha-result-screen.html"
+            document.location = "/ha-search-screen.html";
         });
 
         function resetTotalDuration() {
