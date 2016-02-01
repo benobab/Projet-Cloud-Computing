@@ -1,12 +1,15 @@
 **Projet déployé sur le cloud [ici](https://projethd-1195.appspot.com)**
 
-# Etudiants 
-- Nicolas Sagon
-- Benjamin Lacroix
-- Thibault Boksebeld
+# Etudiants
+- Nicolas Sagon (33,33%)
+- Benjamin Lacroix (33,33%)
+- Thibault Boksebeld (33,33%)
 
 # Architecture
 API en Java EE via des servlets, task, etc.
+
+**Architecture Fonctionnelle**
+![Architecture Fonctionnelle](archi.png)
 
 # Fonctions implémentées
 + Page d'accueil avec appel au cache pour récupérer le message d'accueil et au datastore s'il n'y est pas présent.
